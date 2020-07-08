@@ -53,7 +53,7 @@ with zipfile.ZipFile('build.zip', mode='w', compression=zipfile.ZIP_DEFLATED) as
                 if subs > 0:
                     modified = True
             if modified:
-                data = re.sub('(CanopyGlass..[^\x00]......).', '\\1\x00', data)
+                data = re.sub('([0-9]\x0b\x00\x00\x00CanopyGlass)...(.)....(.).(..)...', '\\1\xff\xff\xff\\2\x00\x00\x00\xff\\3\x00\\4\x00\x00\x00', data)
                 head, tail = os.path.split(filename)
                 newfilename = head + '/_' + tail
                 zf.writestr('PilotInCockpit/data/' + newfilename, data.encode('latin_1'))
