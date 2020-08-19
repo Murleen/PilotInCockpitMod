@@ -49,7 +49,7 @@ with zipfile.ZipFile('build.zip', mode='w', compression=zipfile.ZIP_DEFLATED) as
                 data = f.read().decode('latin_1')
             modified = False
             for texture in textures:
-                data, subs = re.subn(texture.replace('pilop', 'pilot').replace('p_pl', 't_pl').replace('t_ch', 'p_ch'), texture, data, flags=re.I)
+                data, subs = re.subn(texture.replace('pilop', 'pilot').replace('p_pl', 't_pl').replace('t_ch', 'p_ch').replace('yaphat', 'yakhat'), texture, data, flags=re.I)
                 if subs > 0:
                     modified = True
             if modified:
