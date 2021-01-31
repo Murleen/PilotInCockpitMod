@@ -62,7 +62,7 @@ with zipfile.ZipFile('build.zip', mode='w', compression=zipfile.ZIP_DEFLATED) as
                                newfilename.replace('_su.', '_%s.').replace('_wi.', '_%s.')))
 
                 with open(os.path.join(datadir, filename.replace('.mgm', '.txt')), mode='r', encoding='cp1251') as f:
-                    txt = [l for l in f if 'keyframes' in l]
+                    txt = [l for l in f if 'lod=' not in l]
                 zf.writestr('PilotInCockpit/data/' + newfilename.replace('.mgm', '.txt'), '\n'.join(txt).encode('cp1251'))
         except FileNotFoundError:
             pass
