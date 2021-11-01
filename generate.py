@@ -34,7 +34,7 @@ with zipfile.ZipFile('build.zip', mode='w', compression=zipfile.ZIP_DEFLATED) as
             continue
         with open(filename, mode='r', encoding='cp1251') as f:
             data = f.read()
-        models = models.union(re.findall(r'(?<!//)VisualImage=[0-9]+,"([^"]+)"', data))
+        models = models.union(map(str.lower, re.findall(r'(?<!//)VisualImage=[0-9]+,"([^"]+)"', data)))
 
     seasonmodels = {x for x in models if '%s' in x}
     models -= seasonmodels
